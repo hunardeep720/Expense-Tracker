@@ -1,0 +1,167 @@
+.chart-container {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+  width: 100%;
+  overflow: hidden;
+}
+
+h2 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: clamp(20px, 4vw, 24px);
+  font-weight: 600;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  min-width: 0;
+}
+
+.summary-card:active {
+  transform: scale(0.98);
+}
+
+.summary-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.summary-card.income {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+}
+
+.summary-card.expense {
+  background: linear-gradient(135deg, #f44336 0%, #e53935 100%);
+  color: white;
+}
+
+.summary-card.balance {
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  color: white;
+}
+
+.summary-card.balance.negative {
+  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+}
+
+.card-icon {
+  font-size: clamp(24px, 5vw, 32px);
+  flex-shrink: 0;
+}
+
+.card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-label {
+  font-size: clamp(10px, 2vw, 12px);
+  opacity: 0.9;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-value {
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chart-wrapper {
+  height: 350px;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .chart-wrapper {
+    height: 320px;
+  }
+
+  .summary-cards {
+    gap: 10px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .chart-container {
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  .summary-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .summary-card {
+    padding: 14px;
+  }
+
+  .chart-wrapper {
+    height: 280px;
+  }
+
+  h2 {
+    margin-bottom: 16px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .chart-container {
+    padding: 14px;
+  }
+
+  .chart-wrapper {
+    height: 240px;
+  }
+
+  .summary-card {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .summary-cards {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .summary-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .chart-wrapper {
+    height: 220px;
+  }
+}

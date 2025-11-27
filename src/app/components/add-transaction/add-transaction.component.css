@@ -1,0 +1,117 @@
+.add-transaction-container {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+h2 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: clamp(20px, 4vw, 24px);
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: #555;
+  font-weight: 500;
+  font-size: clamp(13px, 2.5vw, 14px);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: clamp(14px, 3vw, 16px);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.error {
+  color: #f44336;
+  font-size: clamp(11px, 2vw, 12px);
+  margin-top: 4px;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: clamp(15px, 3vw, 16px);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+.btn-primary:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .add-transaction-container {
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  h2 {
+    margin-bottom: 16px;
+  }
+
+  .form-group {
+    margin-bottom: 14px;
+  }
+
+  .form-control {
+    padding: 12px 10px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .btn-primary {
+    padding: 14px;
+    min-height: 48px; /* Better touch target */
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .add-transaction-container {
+    padding: 14px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+}

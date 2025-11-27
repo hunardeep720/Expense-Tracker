@@ -1,0 +1,39 @@
+<div class="chart-container">
+  <h2>Financial Overview</h2>
+
+  <div class="summary-cards">
+    <div class="summary-card income">
+      <div class="card-icon">💰</div>
+      <div class="card-content">
+        <div class="card-label">Total Income</div>
+        <div class="card-value">${{ totalIncome.toFixed(2) }}</div>
+      </div>
+    </div>
+
+    <div class="summary-card expense">
+      <div class="card-icon">💸</div>
+      <div class="card-content">
+        <div class="card-label">Total Expenses</div>
+        <div class="card-value">${{ totalExpenses.toFixed(2) }}</div>
+      </div>
+    </div>
+
+    <div class="summary-card balance" [class.negative]="balance < 0">
+      <div class="card-icon">📊</div>
+      <div class="card-content">
+        <div class="card-label">Balance</div>
+        <div class="card-value">${{ balance.toFixed(2) }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-wrapper">
+    <canvas
+      baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      type="bar"
+    >
+    </canvas>
+  </div>
+</div>

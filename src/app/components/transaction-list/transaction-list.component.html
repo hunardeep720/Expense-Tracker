@@ -1,0 +1,74 @@
+<div class="transaction-list-container">
+  <h2>Transactions</h2>
+
+  <div class="filters">
+    <div class="filter-group">
+      <label for="typeFilter">Type:</label>
+      <select
+        id="typeFilter"
+        (change)="onTypeChange($event)"
+        class="filter-select"
+      >
+        <option value="all">All</option>
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="categoryFilter">Category:</label>
+      <select
+        id="categoryFilter"
+        (change)="onCategoryChange($event)"
+        class="filter-select"
+      >
+        <option value="all">All Categories</option>
+        <option *ngFor="let cat of getUniqueCategories()" [value]="cat">
+          {{ cat }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div
+    class="transaction-list"
+    *ngIf="filteredTransactions.length > 0; else noTransactions"
+  >
+    <div
+      *ngFor="let transaction of filteredTransactions"
+      class="transaction-item"
+      [class.income]="transaction.type === 'income'"
+      [class.expense]="transaction.type === 'expense'"
+    >
+      <div class="transaction-info">
+        <div class="transaction-header">
+          <span class="transaction-category">{{ transaction.category }}</span>
+          <span class="transaction-date">{{
+            transaction.date | date : "short"
+          }}</span>
+        </div>
+        <div class="transaction-description">{{ transaction.description }}</div>
+      </div>
+
+      <div class="transaction-actions">
+        <span
+          class="transaction-amount"
+          [class.positive]="transaction.type === 'income'"
+        >
+          {{ transaction.type === "income" ? "+" : "-" }}${{
+            transaction.amount.toFixed(2)
+          }}
+        </span>
+        <button class="btn-delete" (click)="deleteTransaction(transaction.id)">
+          🗑️
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noTransactions>
+    <div class="no-transactions">
+      <p>No transactions found</p>
+    </div>
+  </ng-template>
+</div>
