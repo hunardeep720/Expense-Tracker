@@ -12,6 +12,8 @@ import { ExpenseService } from "../../services/expense.service";
   styleUrls: ["./chart-view.component.css"],
 })
 export class ChartViewComponent implements OnInit {
+  private isMobileView = typeof window !== 'undefined' && window.innerWidth < 768;
+
   public barChartOptions: ChartConfiguration["options"] = {
     responsive: true,
     maintainAspectRatio: false,
@@ -19,21 +21,58 @@ export class ChartViewComponent implements OnInit {
       legend: {
         display: true,
         position: "top",
+        labels: {
+          padding: 10,
+          font: {
+            size: this.isMobileView ? 11 : 12,
+          },
+          boxWidth: this.isMobileView ? 30 : 40,
+        },
       },
       title: {
         display: true,
         text: "Monthly Income vs Expenses",
+        font: {
+          size: this.isMobileView ? 14 : 16,
+          weight: "bold",
+        },
+        padding: {
+          top: 5,
+          bottom: 15,
+        },
       },
     },
     scales: {
+      x: {
+        ticks: {
+          font: {
+            size: this.isMobileView ? 10 : 11,
+          },
+          maxRotation: this.isMobileView ? 45 : 0,
+          minRotation: this.isMobileView ? 45 : 0,
+        },
+        grid: {
+          display: false,
+        },
+      },
       y: {
         beginAtZero: true,
         ticks: {
+          font: {
+            size: this.isMobileView ? 10 : 11,
+          },
           callback: function (value) {
             return "$" + value;
           },
         },
+        grid: {
+          color: "rgba(0, 0, 0, 0.05)",
+        },
       },
+    },
+    interaction: {
+      intersect: false,
+      mode: "index",
     },
   };
 
