@@ -12,7 +12,8 @@ import { ExpenseService } from "../../services/expense.service";
   styleUrls: ["./chart-view.component.css"],
 })
 export class ChartViewComponent implements OnInit {
-  private isMobileView = typeof window !== 'undefined' && window.innerWidth < 768;
+  private isMobileView =
+    typeof window !== "undefined" && window.innerWidth < 768;
 
   public barChartOptions: ChartConfiguration["options"] = {
     responsive: true,
